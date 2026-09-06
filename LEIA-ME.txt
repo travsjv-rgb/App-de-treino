@@ -1,0 +1,68 @@
+SOBRECARGA — app de treino com IA
+==================================
+
+O QUE TEM NESSA PASTA
+----------------------
+index.html   → o app inteiro (não precisa instalar nada pra rodar)
+manifest.json → permite instalar como app no celular
+sw.js         → deixa o app funcionar mesmo sem internet (só a parte de dados)
+icon-192.png / icon-512.png → ícone do app
+
+
+PASSO 1 — COLOCAR O APP NA INTERNET (gratuito, 2 minutos)
+-----------------------------------------------------------
+1. Acesse: https://app.netlify.com/drop
+2. Arraste essa pasta inteira (a pasta "pwa-treinos") pra dentro da página
+3. Em alguns segundos, o site te dá um link tipo:
+   https://algumnome-aleatorio.netlify.app
+4. Pronto — esse link já é o seu app, funcionando de verdade na internet.
+
+(Não precisa criar conta pra isso, mas se quiser um link fixo que não muda,
+vale criar uma conta grátis e "reivindicar" o site.)
+
+
+PASSO 2 — INSTALAR NO CELULAR
+-------------------------------
+No Android (Chrome):
+1. Abra o link do Passo 1 no Chrome do celular
+2. Toque nos 3 pontinhos (menu) → "Adicionar à tela inicial" ou "Instalar app"
+3. Pronto, vai aparecer um ícone igual a um app normal
+
+No iPhone (Safari):
+1. Abra o link no Safari
+2. Toque no ícone de compartilhar (quadrado com seta) → "Adicionar à Tela de Início"
+
+
+PASSO 3 — LIGAR A IA
+----------------------
+1. Crie uma conta em https://console.anthropic.com
+2. Gere uma chave de API (começa com "sk-ant-...")
+3. Abra o app → aba Perfil → cole a chave no campo "Chave de API da Anthropic" → Salvar
+
+Sem isso, o app funciona normal pra registrar treino, mas as sugestões de carga
+usam uma regra mais simples (sem IA) e o Coach não responde.
+
+Importante: como é só pra seu uso pessoal, guardar a chave assim é seguro.
+Se um dia você quiser publicar esse app pra outras pessoas usarem, essa parte
+precisa mudar (a chave não pode ficar visível no código de um app público —
+nesse caso é preciso um servidor por trás pra proteger a chave).
+
+
+PASSO 4 (OPCIONAL) — GERAR UM .APK DE VERDADE
+------------------------------------------------
+Se quiser um arquivo instalável sem passar pelo navegador:
+1. Acesse https://www.pwabuilder.com
+2. Cole o link do Passo 1 (o do Netlify)
+3. Clique em "Package for stores" → Android
+4. Ele gera o .apk pra você baixar e instalar direto no celular
+
+
+DÚVIDAS COMUNS
+----------------
+"A IA não responde" → verifique se colou a chave certa na aba Perfil
+"As imagens dos exercícios não aparecem" → normal em alguns exercícios muito
+específicos, o banco de imagens gratuito não cobre 100% dos casos
+"Perdi meus dados" → os dados ficam salvos só nesse celular/navegador. Se trocar
+de aparelho ou limpar os dados do navegador, perde o histórico (isso é uma
+limitação dessa versão simples — pra sincronizar entre aparelhos precisaria de
+conta + banco de dados na nuvem, que é um passo futuro do projeto)
