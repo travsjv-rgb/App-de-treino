@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+<title>Sobrecarga</title>
+<link rel="manifest" href="./manifest.json" />
+<link rel="icon" href="./icon-192.png" />
+<link rel="apple-touch-icon" href="./icon-192.png" />
+<meta name="theme-color" content="#14161A" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { margin: 0; background: #14161A; -webkit-tap-highlight-color: transparent; }
+  * { box-sizing: border-box; }
+  .spinner { border: 2px solid #2A2E37; border-top-color: #C9A227; border-radius: 50%; width: 16px; height: 16px; animation: girar 0.7s linear infinite; }
+  @keyframes girar { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="./app.bundle.js"></script>
+<script>
+  window.addEventListener("error", function (e) {
+    var raiz = document.getElementById("root");
+    if (raiz && !raiz.innerHTML.trim()) {
+      raiz.innerHTML =
+        '<div style="padding:24px;color:#F0EDE6;font-family:monospace;font-size:13px;line-height:1.6;white-space:pre-wrap;">' +
+        '<strong style="color:#C9A227;">Erro ao carregar o app:</strong>\n\n' + (e.message || e) +
+        '\n\n(arquivo: ' + (e.filename || "?") + ', linha ' + (e.lineno || "?") + ')' +
+        '</div>';
+    }
+  });
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () { navigator.serviceWorker.register("./sw.js").catch(function () {}); });
+  }
+</script>
+</body>
+</html>
